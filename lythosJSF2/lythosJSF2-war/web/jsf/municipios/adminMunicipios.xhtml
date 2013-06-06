@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"  
+      xmlns:p="http://primefaces.org/ui">
+      
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+   <style>
+       .cabeceracentro {
+           width:50%;
+           float:left;
+       }
+       
+       .cabeceraderecha{
+           width:30%;
+           float:right;
+       }
+       
+   </style>
+   
+   
+    <div class="content-main row-fluid">
+            <div class="span8 column">
+               
+             
+                        
+
+        <h:form prependId="false" id="theForm">
+            <p:dataTable  id="dataTable"  var="municipio" widgetVar="tMunicipio" emptyMessage="No hay municipios encontrados"  
+                              value="#{adminMunicipios.municipios}"  paginator="true"  filteredValue="#{adminMunicipios.filteredMunicipios}"  >
+
+                     <f:facet name="header">  
+                        <p:outputPanel>  
+                            
+                            <div align="center" class="cabeceracentro">
+                                <h:outputText value="Buscador todos los campos:" />  
+                                <p:inputText id="globalFilter"   onkeyup="tMunicipio.filter()" style="width:150px" />  
+                            </div>
+                            <div align="right" class="cabeceraderecha"><p:button outcome="insertarMunicipio.jsf"  value="Insertar" /></div>
+                        </p:outputPanel>  
+                    </f:facet>  
+
+
+                    <p:column id="idMun"  sortBy="#{municipio.idMunicipio}" filterBy="#{municipio.idMunicipio}"    
+                    headerText="Municipio" 
+                    filterMatchMode="contains" >  
+                        <h:outputText value="#{municipio.idMunicipio}" />  
+                    </p:column>  
+
+                    <p:column id="nombre" sortBy="#{municipio.nombre}" filterBy="#{municipio.nombre}"    
+                    headerText="Nombre" 
+                    filterMatchMode="contains" >  
+                        <h:outputText value="#{municipio.nombre}" />
+                    </p:column>
+
+                    <p:column id="numero" sortBy="#{municipio.numero}" filterBy="#{municipio.numero}"    
+                    headerText="Numero" 
+                    filterMatchMode="startsWith" >  
+                         <h:outputText value="#{municipio.numero}" />
+
+                    </p:column>
+
+                    <p:column id="fax" sortBy="#{municipio.fax}" filterBy="#{municipio.fax}"    
+                    headerText="Fax" 
+                    filterMatchMode="startsWith" > 
+
+                         <h:outputText value="#{municipio.fax}" />
+
+                    </p:column>
+
+                    <p:column id="cp" sortBy="#{municipio.cp}" filterBy="#{municipio.cp}"    
+                    headerText="CP" 
+                    filterMatchMode="startsWith" > 
+
+                         <h:outputText value="#{municipio.cp}" />
+
+                    </p:column >
+
+                    <p:column headerText="Acciones">
+
+                        <p:commandButton value="Borrar"  
+                                         update=":theForm"
+                                         oncomplete="tMunicipio.clearFilters()"
+                                         action="#{adminMunicipios.borrarMunicipio(municipio)}" >
+                                          
+                        </p:commandButton>
+                        
+                          <p:commandButton value="Editar"   
+                                           update=":theForm"
+                                            oncomplete="tMunicipio.clearFilters()"
+
+                                           action="#{adminMunicipios.goToEditar()}">
+                              <f:setPropertyActionListener value="#{municipio}"
+
+                                                           target="#{adminMunicipios.municipio}"  />
+                          </p:commandButton>
+
+                    </p:column>
+
+            </p:dataTable>
+       </h:form>   
+    </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+                
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+</html>
+

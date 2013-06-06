@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        
+        
+        <title>Modelos Fijos</title>
+        
+    </h:head>
+    <h:body>
+        
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+   
+    <div class="content-main row-fluid">
+            <div class="span8 column">
+  
+        
+        
+        
+        
+        <h:form>
+            <h:dataTable var="modelosFijos" value="#{adminModelosFijosBean.modelos}" class="admin-table table table-hover">
+                <h:column>
+                    <f:facet name="header"> idModelosFijos </f:facet>
+                   #{modelosFijos.idModeloFijo}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Detalles </f:facet>
+                    #{modelosFijos.detalles}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Imagen </f:facet>
+                    #{modelosFijos.imagen}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Lanzamiento </f:facet>
+                    #{modelosFijos.lanzamiento}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Marca </f:facet>
+                    #{modelosFijos.marca}
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Modelo </f:facet>
+                    #{modelosFijos.modelo}
+                </h:column>
+                <h:column>
+                          <f:facet name="header"> Acciones  <h:commandButton class="btn btn-info" action="insertarModelosFijos.jsf" value="Insert" /></f:facet>
+                    <h:commandButton class="btn btn-danger" action="#{adminModelosFijosBean.Delete(modelosFijos)}" 
+                                     value="Delete">
+                        <f:ajax render="@form" />
+                    </h:commandButton>
+                                                                                    
+                    
+                          <h:commandButton class="btn btn-warning" value="Editar"  action="#{adminModelosFijosBean.editandoForm()}" > 
+                          <f:setPropertyActionListener value="#{modelosFijos}"
+                                                        
+                                                       target="#{adminModelosFijosBean.selectedmodelofijo}"  />
+                      </h:commandButton>
+
+                </h:column>
+                
+                
+                
+            </h:dataTable>
+            <center>
+            
+                
+            <!-- <h:commandButton action="#{modelosFijos.cancel}" value="Cancel">
+                    <f:setPropertyActionListener value="#{modelosFijos}"
+                                                 target="#{modelosFijos.selectedModelo}"/>
+             </h:commandButton>   -->
+                
+            </center>
+        </h:form>
+                
+                
+                
+          <!-- FIN CONTENIDO DE LA PAGINA -->
+            
+            
+         </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+        
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+</html>
+

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+   
+    <div class="content-main row-fluid">
+            <div class="span8 column">
+        
+        <h:form>
+            <h:dataTable  value="#{adminLineas.todasLineas}" var="todas"  class="admin-table table table-hover">
+                <f:facet name="caption" >Administrar Lineas</f:facet>
+                <h:column>
+                    <f:facet  name="header">#</f:facet>
+                    <h:outputText value="#{todas.idLinea}"></h:outputText>                    
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Numero</f:facet>
+                    <h:outputText value="#{todas.numero}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Tipo</f:facet>
+                    <h:outputText value="#{todas.tipo}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">VoIP</f:facet>
+                    <h:outputText value="#{todas.voIP}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Pais</f:facet>
+                    <h:outputText value="#{todas.pais}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Tarifa</f:facet>
+                    <h:outputText value="#{todas.tarifaidTarifa.nombre}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Acciones &nbsp;  <h:button  rendered="#{apiLogin.levelAccess le 0}" outcome="insertarLinea.jsf" value="Insertar" class="btn btn-info" /></f:facet>
+                
+                <h:commandButton class="btn btn-danger" value="Eliminar" rendered="#{apiLogin.levelAccess le 0}" action="#{adminLineas.eliminarLinea()}">
+                        <f:setPropertyActionListener value="#{todas}" target="#{adminLineas.lineaSeleccionada}"></f:setPropertyActionListener>
+                        <f:ajax render="@form" />
+                </h:commandButton>    
+                    
+                <h:commandButton class="btn btn-warning" value="Editar" action="#{adminLineas.editarLinea()}" rendered="#{apiLogin.levelAccess le 0}">
+                    <f:setPropertyActionListener value="#{todas}" target="#{adminLineas.lineaSeleccionada}"></f:setPropertyActionListener>
+                </h:commandButton>
+                
+                
+                    
+                </h:column>
+                
+                                
+            </h:dataTable>  
+            
+           
+            
+        </h:form>
+        
+    </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+                
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+</html>
+

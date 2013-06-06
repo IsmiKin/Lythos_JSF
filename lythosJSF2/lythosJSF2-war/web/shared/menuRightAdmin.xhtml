@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        
+    </head>
+    <body>
+       <div id="menuderecha" class="span4 column">
+            <img alt="140x140" src="http://lorempixel.com/140/140/" class="img-polaroid" />
+                <ul class="nav nav-list">
+                        <li class="nav-header">
+                                Mi cuenta
+                        </li>
+                        <li>
+                            <strong>Nombre: </strong>  <h:outputText value="#{apiLogin.usuarioLogueado.nombre}" ></h:outputText> <!-- <%= request.getSession().getAttribute("nombre") %>--><br />
+                            <strong>Rol: </strong>  <h:outputText value="#{apiLogin.usuarioLogueado.rol}" ></h:outputText> <!--<%= request.getSession().getAttribute("rol") %> -->
+                        </li>
+                        <li >
+                            <a href="#"><h:form><h:commandLink action="#{apiLogin.logoutUser()}" value="Cerrar Sesion" /></h:form> </a>
+                        </li>
+                        <li class="nav-header">
+                                Mis cosas
+                        </li>
+                        <li class="menu-right-telfijo">
+                           
+                              <!--<a href="telfijos/mistelfijos?nickname=<%= request.getSession().getAttribute("nickname") %>"> --><a>Telefonos Fijos</a> <!-- No usamos el idUsuario directamente por seguridad -->
+                        </li>
+                        <li>
+                                <a href="#">Telefonos Moviles</a>
+                        </li>
+                        <li>
+                                <a href="#">Grupo de Rescate</a>
+                        </li>
+                        <li class="nav-header">
+                                Otros
+                        </li>
+                        <li>
+                                <a href="#">Mi perfil</a>
+                        </li>
+                        <li>
+                                <a href="#">Solicitar</a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li>
+                                <a href="#">Ayuda</a>
+                        </li>
+                </ul>
+        </div>
+    </body>
+</html>

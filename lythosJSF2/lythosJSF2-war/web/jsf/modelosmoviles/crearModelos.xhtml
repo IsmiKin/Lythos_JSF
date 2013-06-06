@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+    <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+   
+        <div class="content-main row-fluid">
+        <div class="span8 column">
+        
+        <br/>
+        <h:form class="form-insertar">
+            <br/><b1>Marca</b1>
+            <h:inputText value="#{administracionModelos.AAnadir.marca}">
+                <f:validateLength minimum="2"  />
+            </h:inputText>
+            <br/><b1>Modelo</b1>
+            <h:inputText value="#{administracionModelos.AAnadir.modelo}">
+                <f:validateLength minimum="2" maximum="16" />
+            </h:inputText>
+            <br/><b1>Detalles</b1>
+            <h:inputText value="#{administracionModelos.AAnadir.detalles}"></h:inputText>
+            <br/><b1>Fecha de Lanzamiento</b1>
+            <h:inputText value="#{administracionModelos.AAnadir.lanzamiento}">
+                <f:convertDateTime pattern="d-M-yyyy" />
+            </h:inputText>
+            <br/><b1>Descripción</b1>
+            <h:inputTextarea value="#{administracionModelos.AAnadir.detalles}"></h:inputTextarea>
+            <br/><h:commandButton value="Aceptar" class="btn btn-success" action="#{administracionModelos.crearModelo()}" ></h:commandButton>
+            <h:button class="btn btn-inverse" value="Cancelar" outcome="adminModelos.jsf" />
+        </h:form>
+        
+        
+         </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+                
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+    
+    
+</html>
+

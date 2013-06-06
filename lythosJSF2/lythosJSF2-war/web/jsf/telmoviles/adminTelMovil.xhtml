@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Administracion terminales moviles</title>        
+    </h:head>
+    
+    <h:body>
+        
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+   
+    <div class="content-main row-fluid">
+            <div class="span8 column">
+                
+        <h:form>
+            <h:dataTable value="#{todosTelMovil.todosMoviles}" var="todos" class="admin-table table table-hover">
+               <f:facet name="caption">Administracion Terminales Moviles</f:facet>
+                           
+               <h:column>
+                   <f:facet name="header">#</f:facet>
+                   <h:outputText value="#{todos.idTerminalMovil}"></h:outputText>
+                   </h:column>
+               <h:column>
+                   <f:facet name="header">Codigo</f:facet>
+                   <h:outputText value="#{todos.codigo}"></h:outputText>
+               </h:column>
+               <h:column><f:facet name="header">Lineas</f:facet>
+                   <h:outputText value="#{todos.lineaidLinea.numero}"></h:outputText>
+               </h:column>
+               <h:column>
+                   <f:facet name="header">Modelos</f:facet>
+                   <h:outputText value="#{todos.modeloMovilidModeloMovil.modelo}"></h:outputText>
+               </h:column>
+               <h:column>
+                   <f:facet name="header">Usuarios</f:facet>
+                   <h:outputText value="#{todos.usuarioidUsuario.nombre}"></h:outputText>
+               </h:column>
+               
+                 <h:column>
+                     <f:facet name="header">Acciones &nbsp;<h:button class="btn btn-info" rendered="#{apiLogin.levelAccess le 0}" outcome="insertarTelMovil.jsf"  value="Insertar"  /> </f:facet>
+                     <h:commandButton class="btn btn-danger" action="#{todosTelMovil.deleteMoviles()}" rendered="#{apiLogin.levelAccess le 0}" value="Borrar" >
+                    <f:setPropertyActionListener value="#{todos}" 
+                                                 target="#{todosTelMovil.movilseleccionado}" />
+                    <f:ajax render="@form" />
+                    </h:commandButton>
+                
+               
+                     <h:commandButton class="btn btn-warning" action="#{todosTelMovil.editar()}" value="Editar" rendered="#{apiLogin.levelAccess le 0}" >
+                       <f:setPropertyActionListener value="#{todos}" target="#{todosTelMovil.movilseleccionado}" />
+                   </h:commandButton>
+               </h:column> 
+                   
+    
+        </h:dataTable>
+                                                                     
+                   
+     </h:form>
+        
+    </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+                
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+ 
+</html>
+

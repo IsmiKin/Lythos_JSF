@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+          
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+   
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+   
+    <div class="content-main row-fluid">
+            <div class="span8 column">
+                
+        
+    <script src="js/pages/index.js"></script>
+        
+        
+        <h:form>
+            <h:dataTable value="#{administracionModelos.todosModelos}" var="modelitos"  class="admin-table table table-hover">
+                <h:column>
+                    <f:facet name="header">Marca</f:facet>
+                    <h:outputText value="#{modelitos.marca}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Modelo</f:facet>
+                    <h:outputText value="#{modelitos.modelo}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Fecha Lanzamiento</f:facet>
+                    <!--<f:convertDateTime type="date" dateStyle="full" />-->
+                    <h:outputText value="#{modelitos.lanzamiento}">
+                        <f:convertDateTime pattern="d-M-yyyy" />
+                    </h:outputText>
+                    
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Descripción</f:facet>
+                    <h:outputText value="#{modelitos.detalles}" />
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Acciones <h:commandButton action="crearModelos.jsf" rendered="#{apiLogin.levelAccess le 0}" value="Crear" class="btn btn-info" /></f:facet>
+                    
+                    <!--Eliminar Modelo-->
+                    <h:commandButton action="#{administracionModelos.eliminarModelo()}" rendered="#{apiLogin.levelAccess le 0}" value="Eliminar" class="btn btn-danger">
+                        <f:setPropertyActionListener value="#{modelitos}" target="#{administracionModelos.model}">
+                        </f:setPropertyActionListener>
+                        <f:ajax render="@form" /> 
+                    </h:commandButton>
+                    
+                    <!--Editar Modelo-->
+<!--                    <a href="editarModelos.jsf">
+                        <button type="button">Editar</button>
+                    </a>-->
+
+                    <h:commandButton action="#{administracionModelos.editarModelo()}" rendered="#{apiLogin.levelAccess le 0}" value="Editar" class="btn btn-warning" >
+                        <f:setPropertyActionListener value="#{modelitos}" target="#{administracionModelos.model}">
+                        </f:setPropertyActionListener>
+                    </h:commandButton>
+                    
+                </h:column>
+            </h:dataTable>
+            
+        </h:form>
+        
+           </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+                
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+</html>
+

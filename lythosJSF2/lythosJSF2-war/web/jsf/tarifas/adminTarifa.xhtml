@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+        <title>LYTHOS - ADMIN TARIFAS</title>
+    </h:head>
+    <h:body> 
+    
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+   
+    <div class="content-main row-fluid">
+            <div class="span8 column">
+                
+                <h:form>
+                <h:dataTable id="adminTarifasTable" value="#{apiTarifa.tarifas}" var="tarifa"
+                 xmlns:ui="http://java.sun.com/jsf/facelets" class="admin-table table table-hover">
+                <f:facet name="caption">Administracion de Tarifas</f:facet>
+                <!--<h:column>
+                    <f:facet name="header">IdTarifa</f:facet>
+                    <h:outputText value="#{tarifa.idTarifa}"></h:outputText>
+                </h:column> -->
+                <h:column>
+                    <f:facet name="header">Nombre</f:facet>
+                    <h:outputText value="#{tarifa.nombre}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Operadora</f:facet>
+                    <h:outputText value="#{tarifa.operadoridOperador.nombre}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">SMS</f:facet>
+                    <h:outputText value="#{tarifa.sms}"></h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Misma operadora</f:facet>
+                    <h:outputText value="#{tarifa.llamadaOperadora}"></h:outputText> (cnt/min)
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Otra operadora</f:facet>
+                    <h:outputText value="#{tarifa.llamadaFuera}"></h:outputText> (cnt/min)
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Tarifa Datos</f:facet>
+                    <h:outputText value="#{tarifa.TDCapacidad}"></h:outputText> MB
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Acciones &nbsp; 
+                        <h:button class="btn btn-info" outcome="insertTarifa" rendered="#{apiLogin.levelAccess le 0}" value="Insertar"></h:button>                    
+                    </f:facet>
+                    
+                    <h:commandButton class="btn btn-danger" action="#{apiTarifa.borrarTarifa()}" rendered="#{apiLogin.levelAccess le 0}" value="Eliminar">
+                        <f:setPropertyActionListener value="#{tarifa}" target="#{apiTarifa.seleccionada    }">
+                        </f:setPropertyActionListener>
+                        <f:ajax render="@form" />
+                    </h:commandButton>          
+                   
+                    <h:commandButton class="btn btn-warning" action="#{apiTarifa.aEditarVamos()}" rendered="#{apiLogin.levelAccess le 0}" value="Editar" >
+                        <f:setPropertyActionListener value="#{tarifa}" target="#{apiTarifa.seleccionada    }">
+                        </f:setPropertyActionListener>
+                        <f:ajax render="@form" />
+                    </h:commandButton>
+
+                </h:column>
+            </h:dataTable>
+                </h:form>
+                
+            </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+                
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+</html>
+

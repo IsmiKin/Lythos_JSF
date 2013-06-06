@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+              
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+   
+    <div class="content-main row-fluid">
+            <div class="span8 column">
+  
+        
+        <f:view>
+            <h:form class="form-insertar">
+                Nombre<h:inputText value="#{adminMunicipios.municipio.nombre}" >
+                    <f:validateRequired /> 
+                    <f:validateLength  minimum="3"  maximum="5" />
+                </h:inputText> <br />
+                Numero<h:inputText value="#{adminMunicipios.municipio.numero}" >
+                    <f:validateRequired /> 
+                    <f:validateLength minimum="9" maximum="12" />
+                </h:inputText><br />
+                CP<h:inputText value="#{adminMunicipios.municipio.cp}" >
+                    <f:validateLength minimum="5" maximum="5" />
+                </h:inputText><br />
+                Fax<h:inputText value="#{adminMunicipios.municipio.fax}" /><br />
+                <h:commandButton value="Añadir" action="#{adminMunicipios.insertando()}" class="btn btn-success" /><br />
+                <h:button outcome="adminMunicipios" value="Volver" class="btn btn-inverse"/>
+            </h:form>
+        </f:view>
+                
+    </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+                
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+</html>
+

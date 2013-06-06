@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      
+          
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Añadir Terminal Movil</title>
+    </h:head>
+    <h:body>
+        
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+   
+    <div class="content-main row-fluid">
+            <div class="span8 column">
+        
+        
+        <h:form class="form-insertar">
+            <b>Insertar nuevo Terminal movil</b><br/>
+            <b1>Codigo</b1>
+            <h:inputText value="#{todosTelMovil.crear.codigo}">
+                <f:validateRequired />
+                <f:validateLength minimum="3" maximum="10" />
+                
+            </h:inputText>
+            <br/><b1>Lineas</b1>
+            <h:selectOneMenu  value="#{todosTelMovil.FK_Linea}">
+                <f:selectItems value="#{todosTelMovil.conjLineas}" />
+                
+            </h:selectOneMenu>
+            <br/><b1>Usuarios</b1>
+            <h:selectOneMenu value="#{todosTelMovil.FK_Usuario}">
+                <f:selectItems value="#{todosTelMovil.conjUsuarios}" />
+            </h:selectOneMenu>
+            <br/><b1>Modelos</b1>
+            <h:selectOneMenu value="#{todosTelMovil.FK_ModeloMovil}">
+                <f:selectItems value="#{todosTelMovil.conjModeloMovil}" />
+            </h:selectOneMenu>
+            <br/><br/><h:commandButton class="btn btn-success" value="Aceptar"  action="#{todosTelMovil.crearTerminalmovil()}"></h:commandButton>&nbsp;
+            <h:button value="Cancelar" class="btn btn-inverse" outcome="adminTelMovil" />
+            
+        </h:form>
+        
+        
+   </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+                
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+</html>
+

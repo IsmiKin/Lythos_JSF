@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+      
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+     <b>Editar Linea</b><br/>
+    <div class="content-main row-fluid">
+            <div class="span8 column">
+        
+        <h:form class="form-insertar">
+            <b1>Numero</b1>
+            <h:inputText value="#{adminLineas.lineaSeleccionada.numero}"></h:inputText>
+            <br/><b1>Tipo</b1>
+            <h:selectOneRadio value="#{adminLineas.lineaSeleccionada.tipo}">
+                <f:selectItem itemValue="Movil" itemLabel="Movil"></f:selectItem>
+                <f:selectItem itemValue="Fijo" itemLabel="Fijo"></f:selectItem>
+            </h:selectOneRadio>
+            <br/><b1>VoIP</b1>
+            <h:selectOneRadio value="#{adminLineas.lineaSeleccionada.voIP}">
+                <f:selectItem itemValue="Si" itemLabel="Si"></f:selectItem>
+                <f:selectItem itemValue="No"  itemLabel="No"></f:selectItem>
+            </h:selectOneRadio>
+            <br/><b1>Pais</b1>
+            <h:inputText value="#{adminLineas.lineaSeleccionada.pais}"></h:inputText>
+            <br/><b1>Tarifa</b1>
+            <h:selectOneMenu value="#{adminLineas.FK_Tarifa}">
+                <f:selectItems  value="#{adminLineas.conjTarifas}"></f:selectItems>            
+            </h:selectOneMenu>
+            <br/><br/><h:commandButton class="btn btn-success" value="Aceptar" action="#{adminLineas.actualizarLinea()}"></h:commandButton>&nbsp;
+            <h:commandButton class="btn btn-inverse" value="Cancelar" action="adminLineas.jsf"></h:commandButton>
+            
+            
+        </h:form>
+        
+    </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+                
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+</html>
+

@@ -1,0 +1,70 @@
+<!-- 
+    Document   : headeradmin
+    Created on : 30-mar-2013, 20:00:02
+    Author     : IsmiKin
+    Description : Cabecera para la vista de Administrador
+-->
+
+
+<html xmlns:h="http://java.sun.com/jsf/html">
+    <h:head />
+       
+            <link rel="stylesheet" href="../../css/pages/home.css" />
+
+            <div class=" menu-barra navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a class="brand" href="#">Proyecto Lythos</a>
+                        <div class="nav-collapse collapse">
+                            <ul class="nav">
+                                <li > <a href="#"> Inicio </a> </li>
+                               <h:panelGroup layout="block" rendered="#{apiLogin.levelAccess le 1}" >  
+                                   <li class="dropdown">
+                                     <a href="#" class="dropdown-toggle menu-terminales" data-toggle="dropdown">Lineas <b class="caret"></b></a>
+                                     <ul class="dropdown-menu">
+                                         <li class="nav-header">Lineas</li>
+                                         <li > <a href="../lineas/adminLineas.jsf"> Administrar </a> </li>
+                                         <h:panelGroup layout="block" rendered="#{apiLogin.levelAccess le 0}" ><li > <a href="../lineas/insertarLinea.jsf"> Insertar </a> </li></h:panelGroup>
+                                         <li > <a href="../tarifas/adminTarifa.jsf"> Tarifas </a> </li>
+                                     </ul>                                    
+                                </li>
+                               </h:panelGroup>    
+                                
+                            <!--    <li > <h:commandLink action="../lineas/adminLineas.jsf">Lineas </h:commandLink> </ </li>-->
+                                <h:panelGroup layout="block" rendered="#{apiLogin.levelAccess le 1}" > <li > <a href="#"> Contabilidad </a> </li> </h:panelGroup>
+                                <li > <a href="#"> Listin Telefonico </a> </li>
+                                <h:panelGroup layout="block" rendered="#{apiLogin.levelAccess le 0}" ><li > <a href="adminUsuario">Usuarios</a>  </li></h:panelGroup>
+                                <h:panelGroup layout="block" rendered="#{apiLogin.levelAccess le 1}" >
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle menu-terminales" data-toggle="dropdown">Terminales <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                          <li class="nav-header">Terminales Fijos</li>
+                                          <li><a href="telfijos/admin">Administrar</a></li>                          
+                                          <h:panelGroup layout="block" rendered="#{apiLogin.levelAccess le 0}" ><li><a href="telfijos/formTelFijos">Insertar</a></li>    </h:panelGroup> 
+                                          <li><a href="../modelosFijos/adminModelosFijos.jsf">Modelos</a></li>                                                    
+                                          <li class="divider"></li>
+                                          <li class="nav-header">Terminales Moviles</li>
+                                          <li><a href="../telmoviles/adminTelMovil.jsf">Administrar</a></li>
+                                          <h:panelGroup layout="block" rendered="#{apiLogin.levelAccess le 0}" ><li><a href="../telmoviles/insertarTelMovil.jsf">Insertar</a></li>    </h:panelGroup>
+                                          <li><a href="../modelosmoviles/adminModelos.jsf">Modelos</a></li>
+                                        </ul>
+                                      </li>
+                                  </h:panelGroup>
+                                <h:panelGroup layout="block" rendered="#{apiLogin.levelAccess le 1}" >
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle menu-gestion" data-toggle="dropdown">Gestion Interna <b class="caret"></b></a>
+                                          <ul class="dropdown-menu">
+                                                  <li class="nav-header">Municipios</li>
+                                                  <li><a href="../municipios/adminMunicipios.jsf">Administrar</a></li>
+                                                  <h:panelGroup layout="block" rendered="#{apiLogin.levelAccess le 0}" >     <li><a href="../municipios/insertarMunicipio.jsf">Insertar</a></li> </h:panelGroup>
+                                          </ul>
+                                    </li>
+                                 </h:panelGroup>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</html>

@@ -1,0 +1,96 @@
+/* 
+    Document   : home
+    Created on : 23-abr-2013, 13:19:36
+    Author     : IsmiKin
+    Description:
+        CSS de la cabecera para user en home
+*/
+
+root { 
+    display: block;
+}
+
+#navbar{
+    margin-bottom: 20px;
+}
+
+
+#footer{
+    margin-top: 30px;
+    background-image:  url(../../img/dark_mosaic.png);
+    background-repeat:  repeat;
+    padding: 30px;
+    height: 150px;
+}
+
+#footer img{
+    height:80px;
+}
+
+.meteor-footer{
+    color:  #f7f7f7;
+    font-size:  large;
+        
+}
+
+.table{
+   
+}
+
+.form-insertar{
+    margin-left:20%;
+    margin-right: 10%;
+}
+
+.menu-barra{
+    margin-bottom:  50px;
+}
+
+.content-main{
+    margin-top:80px;
+}
+
+
+#footer{
+    background-image:  url(../../img/dark_mosaic.png);
+    background-repeat:  repeat;
+    padding: 30px;
+    height: 150px;
+}
+
+#footer img{
+    height:80px;
+}
+
+.meteor-footer{
+    color:  #f7f7f7;
+    font-size:  large;
+        
+}
+
+.mensaje-operacion{
+    margin-left: 5%;
+    margin-right: 3%; 
+    padding:2%;
+}
+
+.main-content-left{
+   
+}
+
+.formEditarModelosFijos{
+    margin-left: 25%;
+}
+
+.admin-table{
+    margin-left: 2%;
+}
+
+/* LIST #4 */
+#list4 { width:220px; font-family:Georgia, Times, serif; font-size:15px; }
+#list4 ul { list-style: none; }
+#list4 ul li { }
+#list4 ul li a { display:block; text-decoration:none; color:#000000; background-color:#FFFFFF; line-height:30px;
+  border-bottom-style:solid; border-bottom-width:1px; border-bottom-color:#CCCCCC; padding-left:10px; cursor:pointer; }
+#list4 ul li a:hover { color:#FFFFFF; background-image:url(../../img/hover.png); background-repeat:repeat-x; }
+#list4 ul li a strong { margin-right:10px; }

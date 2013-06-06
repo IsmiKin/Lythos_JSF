@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>Editando Modelos Fijos</title>
+    </head>
+    <h:body>
+        
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headeradmin.xhtml" />
+        
+   
+    <div class="content-main row-fluid">
+            <div class="span8 column">
+  
+        
+        
+        
+        <f:view>
+            <h:form class="form-insertar"  >
+                Detalles<h:inputText value="#{adminModelosFijosBean.selectedmodelofijo.detalles}" /> <br/>
+                Imagen<h:inputText value="#{adminModelosFijosBean.selectedmodelofijo.imagen}"/><br/>
+                Marca<h:inputText value="#{adminModelosFijosBean.selectedmodelofijo.marca}"/><br/>
+                Modelo<h:inputText value="#{adminModelosFijosBean.selectedmodelofijo.modelo}"/><br/>
+               
+                <h:commandButton class="btn btn-success" value="Guardar" action="#{adminModelosFijosBean.editando() }" >                    
+                </h:commandButton>
+                <h:button class="btn btn-inverse" outcome="adminModelosFijos" value="Cancelar"></h:button>                    
+            </h:form>
+        </f:view>
+
+
+          <!-- FIN CONTENIDO DE LA PAGINA -->
+            
+            
+         </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+        
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+</html>

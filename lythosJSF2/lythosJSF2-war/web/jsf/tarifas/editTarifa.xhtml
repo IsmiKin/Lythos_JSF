@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+        <title>Lythos - Editar Tarifa</title>
+    </h:head>
+    <h:body>
+        
+        
+        <div class="content-main row-fluid">
+                <div class="span8 column">
+        
+        <ui:include src="../../shared/headerlibs.xhtml" />
+        <ui:include src="../../shared/headeradmin.xhtml" />
+        
+            <!-- CONTENIDO DE LA PAGINA -->
+            
+            <script>
+                $(document).ready(function(){
+                    $(".requiredfield").attr("required","required");
+                });               
+            </script>
+            
+            <h:form  class="form-insertar">
+                
+                <label for="nombreField">Nombre</label>
+                <h:inputText id="nombreField"  value="#{apiTarifa.seleccionada.nombre}" required="true" requiredMessage="Este campo es obligatorio" class="input-large requiredfield" title="Nombre" >
+                <!--    <f:attribute name="required" value="required" />  Si le añado el atributo required por aqui me salta un error de Servlet..  -->
+                <!--    <f:validateRequired />                     -->
+                    <f:validateRequired /> 
+                    <f:validateLength  minimum="3"  maximum="5" />
+                </h:inputText>
+                                                
+                <label for="descripcionField">Descripcion</label>
+                <h:inputText id="descripcionField"  value="#{apiTarifa.seleccionada.descripcion}" class="input-xxlarge" title="Descripcion" /> 
+                
+                <label for="operadoraField">Operadora</label>
+                <h:selectOneMenu value="#{apiTarifa.FK_Operador}">
+                    <f:selectItems value="#{apiTarifa.operadoras}"  /> 
+                </h:selectOneMenu>
+                
+                <label for="tarifaDatosField" >Tarifa de Datos (MB)</label>
+                <h:inputText id="tarifaDatosField" class="input-large" value="#{apiTarifa.seleccionada.TDCapacidad}" title="Tarifa de Datos en MB" />
+                
+                <label for="llamadaOperadoraField">Llamada entre misma operadora</label>
+                <h:inputText id="llamadaOperadoraField" value="#{apiTarifa.seleccionada.llamadaOperadora}" class="input-large" title="Llamada entre misma operadora" />
+                
+                <label for="llamadaFueraField">Llamada entre distintas operadoras</label>
+                <h:inputText id="llamadaFueraField" value="#{apiTarifa.seleccionada.llamadaFuera}" class="input-large" title="Llamada entre distintas operadora" />
+                
+                <label for="smsField">Coste de SMS</label>
+                <h:inputText id="smsField" value="#{apiTarifa.seleccionada.sms}" class="input-large" title="Coste de SMS" />
+                
+                <br/>
+                <h:commandButton action="#{apiTarifa.editTarifa()}"  class="btn btn-info" value="Editar" />
+                &nbsp;
+                <h:button class="btn btn-inverse" outcome="adminTarifa" value="Cancelar"></h:button>                    
+            </h:form>
+                
+            <!-- FIN CONTENIDO DE LA PAGINA -->
+            
+            
+         </div><!--  END CENTER CONTENT -->
+
+        <ui:include src="../../shared/menuRightAdmin.xhtml" />        
+
+    </div> <!-- END content-main row-fluid -->
+        
+    </h:body>
+    
+    <ui:include src="../../shared/footerguest.xhtml" />
+</html>
+

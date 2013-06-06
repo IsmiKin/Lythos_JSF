@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+        <title>Lythos - Error Login</title>
+    </h:head>
+    <h:body>
+        
+            
+   <ui:include src="../../shared/headerlibs.xhtml" />
+   <ui:include src="../../shared/headerguest.xhtml" />
+   
+        <script src="js/pages/index.js"></script>
+
+            <div id="wrap">
+
+                <div class="row  info-index">
+
+                    <div  class="span12">
+                        <center><p class="text-center welcome-title"><h1>¡Ups! Parece que ha ocurrido un error</h1></p></center>
+                    </div>
+
+                        <div class="row-fluid">
+
+                            <div class="span4">
+                                <img class="img-rounded" src="img/dead_smile.png" /> >
+                            </div>
+
+
+                            <div class="span8 textospan">
+                                <strong>¡Ha habido un problema al entrar en la plataforma  !</strong><br /><br />
+                               Pruebe a escribir de nuevo su cuenta de usuario y contraseña      <br /><br />
+
+
+                               <form id="loginForm" action="login" method="POST">
+                                    <input type="text" id="user" name="nickname" class="input-block-levelt" placeholder="Nombre de Usuario" title="Nombre de usuario" required="required"
+                                           />
+                                    <br />
+                                    <input id="pass" name="pass" type="password" class="input-block-levelt" placeholder="Contraseña" title="Tu contraseña" required="required" />
+                                    <br />
+                                    <button id="btnIniciarSesion" type="submit" class="btn btn-success" >Iniciar Sesion</button>
+                               </form>
+
+                               <ul>
+                                   <li>Si tienes un <b>problema tecnico</b> ponte en contacto con nosotros a través de la Oficina de Soporte Técnico o envienos un correo
+                                        <a href="contacto.jsp" class="btn btn-warning">Contactar</a>
+                                   </li>                       
+
+                               </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+            </div>
+        
+        <ui:include src="../../shared/footerguest.xhtml" />
+    </h:body>
+</html>
+
